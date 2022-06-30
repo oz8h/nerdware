@@ -4,6 +4,7 @@ shitty universal esp / aimbot / utility thing.
 
 # supported
 
-all games, mainly supported:
-  Phantom Forces, -- custom esp and aimbot (VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV)
-  Neighborhood War -- custom esp and aimbot (because others cant handle same team)
+basically every game, if you count the ones that are coded in then:
+
+Phantom Forces,
+Neighborhood war
