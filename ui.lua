@@ -2723,12 +2723,12 @@ function library:Watermark(str)
 		ZIndex = 3,
 		Theme = "Window Background"
 	})
-	
+
 	self.watermarkobject = watermark
 
 	local outline = utility.outline(watermark, "Accent")
 	utility.outline(outline, "Window Border")
-	
+
 	local dragoutline = utility.create("Square", {
 		Size = UDim2.new(0, size + 18, 0, 22),
 		Position = utility.getcenter(size + 16, 20),
@@ -2763,10 +2763,12 @@ function library:Watermark(str)
 	function watermarktypes:Set(str)
 		local size = utility.textlength(str, Drawing.Fonts.Plex, 13).X
 		watermark.Size = UDim2.new(0, size + 16, 0, 20)
+		dragoutline.Size = UDim2.new(0, size + 18, 0, 22)
 		watermark.Position = UDim2.new(0, 16, 0, 16)
+		dragoutline.Position = utility.getcenter(size + 16, 20)
 		text.Text = str
 	end
-	
+
 	utility.dragify(watermark, dragoutline)
 	return watermarktypes
 end
