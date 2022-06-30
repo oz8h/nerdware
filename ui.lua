@@ -1,7 +1,4 @@
--- https://v3rmillion.net/showthread.php?tid=1170503
--- edited some stufffffffffff
-
---// CUSTOM DRAWING
+--// https://v3rmillion.net/showthread.php?tid=1170503
 
 local drawing = {} do
 	local services = setmetatable({}, {
@@ -2731,6 +2728,16 @@ function library:Watermark(str)
 
 	local outline = utility.outline(watermark, "Accent")
 	utility.outline(outline, "Window Border")
+	
+	local dragoutline = utility.create("Square", {
+		Size = UDim2.new(0, size + 18, 0, 22),
+		Position = utility.getcenter(size + 16, 20),
+		Filled = false,
+		Thickness = 1,
+		Theme = "Accent",
+		ZIndex = 1,
+		Visible = false,
+	})
 
 	local text = utility.create("Text", {
 		Text = str,
@@ -2760,7 +2767,7 @@ function library:Watermark(str)
 		text.Text = str
 	end
 	
-	utility.dragify(watermark, outline)
+	utility.dragify(watermark, dragoutline)
 	return watermarktypes
 end
 
