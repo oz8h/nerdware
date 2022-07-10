@@ -1356,7 +1356,7 @@ function library:SetTheme(theme)
 		assert(self.extension, "No file extension specified")
 
 		local folderpath = string.format("%s//themes", self.folder)
-		local filepath = string.format("%s//%s.json", folderpath, theme)
+		local filepath = string.format("%s//." .. self.extension, folderpath, theme)
 
 		if isfolder(folderpath) and isfile(filepath) then
 			local themetbl = services.HttpService:JSONDecode(readfile(filepath))
@@ -1378,7 +1378,7 @@ function library:GetThemes()
 	if isfolder(folderpath) then
 		for _, theme in next, listfiles(folderpath) do
 			local name = theme:gsub(folderpath .. "\\", "")
-			name = name:gsub(".json", "")
+			name = name:gsub("." .. self.extension, "")
 			table.insert(themes, name)
 		end
 	end
@@ -1407,7 +1407,7 @@ function library:SaveCustomTheme(name)
 			makefolder(folderpath) 
 		end
 
-		local filepath = string.format("%s//%s.json", folderpath, name)
+		local filepath = string.format("%s//%s." .. self.extension, folderpath, name)
 		writefile(filepath, theme)
 
 		return true
@@ -3365,7 +3365,8 @@ function library:Load(options)
 					local callback = options.callback or function() end
 					local default = options.default or Color3.fromRGB(255, 255, 255)
 					local defaultalpha = options.defaultalpha or 1
-
+					
+					callback(default)
 					return library.createcolorpicker(default, defaultalpha, holder, colorpickers, flag, callback)
 				end
 
